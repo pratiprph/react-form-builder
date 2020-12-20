@@ -83,7 +83,7 @@ function App() {
               key={columnId}
             >
               <h2>{column.name}</h2>
-              <div style={{ margin: 8 }}>
+              <div style={{ margin: 8}}>
                 <Droppable droppableId={columnId} key={columnId}>
                   {(provided, snapshot) => {
                     return (
