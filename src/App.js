@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
 
+import Header from './Header';
+
 import Input from './Input';
 import Password from './Password';
+import Button from './Button';
 
 const itemsFromBackend = [
   { id: uuid(), content: <Input/> },
   { id: uuid(), content: <Password/> },
-  { id: uuid(), content: "Third task" },
-  { id: uuid(), content: "Fourth task" },
-  { id: uuid(), content: "Fifth task" }
+  { id: uuid(), content: <Button/> },
+  
 ];
 
 const columnsFromBackend = {
@@ -64,7 +66,9 @@ const onDragEnd = (result, columns, setColumns) => {
 function App() {
   const [columns, setColumns] = useState(columnsFromBackend);
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+    <div>
+      <Header/>
+    <div style={{ display: "flex" }}>
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >
@@ -95,7 +99,9 @@ function App() {
                           width: 500,
                           minHeight: 300
                         }}
+                        
                       >
+                        
                         {column.items.map((item, index) => {
                           return (
                             <Draggable
@@ -135,6 +141,7 @@ function App() {
           );
         })}
       </DragDropContext>
+      </div>
     </div>
   );
 }
